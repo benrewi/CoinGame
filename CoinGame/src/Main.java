@@ -4,7 +4,7 @@ public class Main extends JFrame {
 	
 	public final static String WINDOW_TITLE = "Coin Game";
 	public final static int WINDOW_WIDTH = 800;
-	public final static int WINDOW_HEIGHT = 800;
+	public final static int WINDOW_HEIGHT = 600;
 	
 	public Main() {
 		setTitle(WINDOW_TITLE);

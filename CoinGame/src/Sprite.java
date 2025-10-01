@@ -18,8 +18,6 @@ public class Sprite {
     	setYPosition(initialYPosition);
     }
     
-
-    
     public void setXPosition(int newX, int panelWidth) {
 		xPosition = newX;
 		if(xPosition < 0){
@@ -55,6 +53,14 @@ public class Sprite {
 			yPosition = panelHeight - height;
 		};
 	}
+    public void setYPositionWithin(int newY, int minY, int maxY) {
+        yPosition = newY;
+        if (yPosition < minY) {
+            yPosition = minY;
+        } else if (yPosition + height > maxY) {
+            yPosition = maxY - height;
+        }
+    }
     
     public int getXVelocity() {
         return xVelocity;
