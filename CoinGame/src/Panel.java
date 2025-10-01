@@ -17,17 +17,36 @@ public class Panel extends JPanel implements ActionListener, KeyListener{
         setBackground(BACKGROUND_COLOR);
         Timer timer = new Timer(TIMER_DELAY, this);
         timer.start();
+        addKeyListener(this);
+        setFocusable(true);
     }
     
+    boolean gameInitialised = false;
+    Player player;
+    
+    public void createObjects() {
+    	player = new Player(getWidth(), getHeight());
+    }
+    
+    
     public void update() {
-    	
+    	if(!gameInitialised) {
+    		createObjects();
+    		gameInitialised = true;
+    	}
+    }
+    
+    private void paintSprite(Graphics g, Sprite sprite) {
+    	g.setColor(sprite.getColor());
+    	g.fillRect(sprite.getXPosition(), sprite.getYPosition(), sprite.getWidth(), sprite.getHeight());
     }
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.setColor(Color.WHITE);
-        g.fillRect(20,  20,  100,  100);
+        if(gameInitialised) {
+        	paintSprite(g, player);
+        }
     }
 
 	@Override
